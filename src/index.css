@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+
+:root {
+  font-family: serif, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+/* bcakground color */
+.bg{
+  background-color: C21010;
+}
+ 
+.onhover{
+  background-color: E64848;
+}
+
+/* common button css */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.4em 1em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #F72C5B;
+  cursor: pointer;
+  transition: border-color 0.25s;
+ 
+  
+}
+button:hover {
+  border-color: #E4F1AC;
+  background-color: #fa052e;
+  transform: scale3d(1.15,1,1);
+}
+button:focus,
+button:focus-visible {
+  outline: 2px auto -webkit-focus-ring-color;
+
+}
+
+
