@@ -1,12 +1,102 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🔥 Arista Mall
 
-Currently, two official plugins are available:
+A sleek, modern React-based powered by vite e-commerce experience with product discovery, cart features, wishlist options login and signup and smooth navigations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Demo
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+demo link : 
+
+
+## Screenshots
+
+![Screenshot](./assets/images/demo1.png)
+
+ ## 📚 Table of Contents
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [contributing](#contributing)
+- [Running Tests](#running-test)
+- [Usage](#usage)
+
+## Features
+
+- 🔍 Product filtering by category
+- 🛒 Add to cart
+- ❤️ add to wishlist
+-  🏬 product display
+- 🔍 search of product
+- 💁🏻‍♂️ login/ signup 
+- 🧩 product details
+
+
+
+## Tech Stack
+
+- React, vite
+- react-redux
+- react router
+- react-icons
+- react-dom
+- react-hot-toast
+- customizable-react-badges
+- react-hot-toast
+- react-loader-spinner
+- react-parallax
+- react-slick
+- tailwind css
+- vitest, react library test
+
+
+
+## 🧰 Installation
+
+#### Install project with npm
+
+Clone the repo and navigate to project directory:
+   ```bash
+   git clone https://github.com/karnpriya08/Arista
+   cd Arista
+```
+####  Install dependencies:
+
+```bash
+   npm install 
+   or 
+   npm install --legacy-peer-deps 
+```
+#### Start the development server:
+```bash
+  npm run dev
+```
+
+## 🤝 Contributing
+
+Contributions are always welcome!
+
+Feel free to fork the project and submit pull requests. For major changes, open an issue first.
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  npm run test
+```
+
+
+###  **Usage**
+```markdown
+## 🧪 Usage
+
+- Visit the homepage to browse fantastic finds project recoomended.
+- browse project by categories.
+- Add items to your cart and proceed to checkout.
+- update the quantity of items in cart.
+- add items to your wishlist.
+- add items to cart from wishlist.
+- provide details of product in product detail page.
+- create user using sign up.
+- login the site.
+- search product by product name.
