@@ -10,8 +10,16 @@ demo link :
 
 
 ## Screenshots
-
+home page:
 ![Screenshot](./assets/images/demo1.png)
+shop page:
+![Screenshot](./assets/images/demo2.png)
+login page:
+![Screenshot](./assets/images/demo3.png)
+cart page:
+![Screenshot](./assets/images/demo5.png)
+wishlist page:
+![Screenshot](./assets/images/demo4.png)
 
  ## 📚 Table of Contents
 - [Features](#features)
