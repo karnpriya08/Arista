@@ -12,7 +12,7 @@ const categories = [
   { label: "Electronics", value: "electronics" }
 ];
 
-const index = () => {
+const Nav = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -52,4 +52,4 @@ const index = () => {
       </div>
     );
   };  
-  export default index;
+  export default Nav;

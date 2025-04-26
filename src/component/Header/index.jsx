@@ -47,8 +47,8 @@ const index = () => {
 
   return (
     <>
-      <div className='bg-gradient-to-r from-red-400 via-pink-500 to-red-600 p-2 shadow-md relative z-20'>
-        <div className='flex justify-between items-center'>
+      <div className='fixed top-0 left-0 w-full bg-gradient-to-r from-red-400 via-pink-500 to-red-600 p-2 shadow-md a z-50'>
+        <div className='flex justify-between items-center '>
           {/* logo */}
           <Link to="/">
             <header className='flex text-xl justify-start font-bold items-center md:left-1/3 p-2 m-1  '>
@@ -125,7 +125,7 @@ const index = () => {
         </div>
       </div>
       {/* mobile links */}
-      <div className={`transition-all duration-300 ease-in-out ${menuOpen ? 'max-h-96' : 'max-h-0 overflow-hidden'}`}>
+      <div className={`transition-all duration-300 ease-in-out ${menuOpen ? 'max-h-96' : 'max-h-0 overflow-hidden'} z-40 fixed top-16 left-0 w-full`}>
         {menuOpen && (
           <div className='bg-gradient-to-r from-red-400 via-pink-500 to-red-500  shadow-md border-red-500 rounded-2xl  font-bold w-auto  p-2 text-left z-10'>
             <ul className='md:hidden grid-cols-6 justify-around space-y-1 text-2xl px-5'>
@@ -160,7 +160,7 @@ const index = () => {
         )}
       </div>
       {/* nav for category  */}
-      <div><Nav /></div>
+      <div className='mt-22'><Nav /></div>
     </>
   )
 }
