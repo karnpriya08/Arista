@@ -1,6 +1,6 @@
 import React from 'react';
 import { Parallax } from 'react-parallax';
-import image from '../../assets/images/c2.avif';
+import image from '../../assets/images/C2.avif';
 
 const index = () => {
   return (
