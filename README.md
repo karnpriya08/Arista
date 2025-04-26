@@ -4,9 +4,9 @@
 A sleek, modern React-based powered by vite e-commerce experience with product discovery, cart features, wishlist options login and signup and smooth navigations.
 
 
-## Demo
+## 🚀 Live Demo
 
-demo link : 
+Check out the deployed app here: [Live App](https://aristaamall.netlify.app)
 
 
 ## Screenshots
