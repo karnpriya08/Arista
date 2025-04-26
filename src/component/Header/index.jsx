@@ -160,7 +160,7 @@ const index = () => {
         )}
       </div>
       {/* nav for category  */}
-      <div className='mt-22'><Nav /></div>
+      <div className=''><Nav /></div>
     </>
   )
 }

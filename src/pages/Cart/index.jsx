@@ -79,13 +79,16 @@ const index = () => {
                           <div className='flex gap-4 h-7 m-2'>
                             <h3>Qty:</h3>
                             <div className='flex flex-row justify-between w-24 border border-gray-200'>
-                              <div onClick={() => {
-                                
-                                if (item.qty > 1) {
-                                  dispatch(updateQuantity(item.product, item.qty - 1));
-                                }
-                              }}
-                                className='bg-red-500 p-1 px-2.5 border-red-300 rounded-md hover:scale-105'> - </div>
+                              <div
+                                onClick={() => {
+                                  if (item.qty === 1) {
+                                    toast.error("Minimum quantity is 1");
+                                    return; // Prevent decrementing if qty is already 1
+                                  }
+                                  dispatch(updateQuantity(item.product, item.qty - 1)); // Update quantity
+                                }}
+                                className={`bg-red-500 p-1 px-2.5 border-red-300 rounded-md hover:scale-105 ${item.qty === 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+                                  }`}>- </div>
                               <span className='p-1 m-0.5'> {item.qty} </span>
                               <div onClick={() => dispatch(updateQuantity(item.product, item.qty + 1))}
                                 className='bg-red-500 p-1 px-2 border-red-300 rounded-md hover:scale-105'>+</div>

@@ -61,9 +61,9 @@ const index = ({ product }) => {
             </Link>
             {/* price rating */}
             <div className='flex justify-around' >
-            <p data-testid="product-price">
-  <span className="font-black">price:$</span>{product.price}
-</p>
+              <p data-testid="product-price">
+                <span className="font-black">price:$</span>{product.price}
+              </p>
               <p><span className='font-black'>rating:  </span> {product.rating.rate}</p>
             </div>
             {/* quantity */}
@@ -71,7 +71,18 @@ const index = ({ product }) => {
               <p className='p-2'>Qty:</p>
               <div className=' p-2' style={{ backgroundColor: "#F72C5B" }} onClick={() => setQty(qty + 1)} data-testid='increase'>+</div>
               <span className='bg-white border border-gray-300 px-3 py-1' data-testid='quantity'>{qty}</span>
-              <div className=' p-2' style={{ backgroundColor: "#F72C5B" }} onClick={() => setQty(Math.max(qty - 1, 1))} data-testid='decrease' >-</div>
+              <div  className={`p-2 ${qty === 1 ? 'opacity-80 cursor-not-allowed' : 'cursor-pointer hover:scale-110'}`}
+                style={{ backgroundColor: "#F72C5B" }}
+                onClick={() => {
+                  if (qty === 1) {
+                    toast.error("Minimum quantity is 1");
+                    return;
+                  }
+                  setQty(qty - 1);
+                }}data-testid='decrease'> -</div>
+              
+                
+
             </div>
             {/* buttons */}
             <div className='flex justify-around m-1 gap-1'>
