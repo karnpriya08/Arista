@@ -24,7 +24,7 @@ const index = () => {
   var settings = {
     infinite: true,
     dots: true,
-    infinite: true,
+
     speed: 500,
     lazyLoad: 'ondemand',
     adaptiveHeight: true,
