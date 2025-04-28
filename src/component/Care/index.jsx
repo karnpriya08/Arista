@@ -6,7 +6,7 @@ const index = () => {
   return (
     <div className=''>
       <div className='flex flex-col items-center text-center py-10 bg-gradient-to-tl from-stone-100 via-transparent to-violet-300'>
-        <h1 className='text-4xl font-bold'>WE CARE</h1>
+        <h1 className='text-5xl font-bold'>WE CARE</h1>
         <p className='mt-4'>
           We do not ask for your bank account or card details verbally or telephonically.
         </p>

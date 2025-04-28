@@ -9,7 +9,7 @@ import Care from '../../component/Care'
 const index = () => {
   return (
     <>
-      <div className='p-6 '>
+      <div className='p-6'style={{ paddingTop: '80px' }}>
         <Caraousel />
       </div>
       {/* refer section */}

@@ -41,7 +41,7 @@ const index = () => {
   }
   return (
     <>
-      <div className='content-responsive-container  '>
+      <div style={{ paddingTop: '80px' }} className='content-responsive-container  '>
         {loading ? (<Loading />) : error ? (<Error />) : (
           <div className=' w-full p-4'>
             <div className='grid grid-cols-1 justify-around md:grid-cols-2 lg:grid-cols-4 gap-14 p-8 '>

@@ -31,47 +31,47 @@ const index = () => {
     <>
       <div>
         <header className='m-2 p-2'>
-          <h1 className='text-5xl text-red-400 text-center'>CONTACT US</h1>
+          <h1 className='text-5xl text-red-400 text-center font-bold'>CONTACT US</h1>
         </header>
         <main className='container bg-gradient-to-tl from-stone-50 via-red-50 to-red-200 flex flex-col p-1 space-y-8 py-5 mx-auto'>
           <div className='w-1/2 relative left-10 md:left-50'>
-            <div>
+            <section>
               <p className='font-bold text-2xl  space-y-5 p-8'>Share your Details. We will Reach you Soon !</p>
-            </div>
+            </section>
             {/* after submitting form  */}
             {submitted ? (
-              <div className="text-red-400 font-semibold text-center text-lg">
+              <section className="text-red-400 font-semibold text-center text-lg">
                 Thank you! We're happy to help you. 😊
-              </div>
+              </section>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* name */}
-                <div>
+                <section>
                   <label className="block text-sm font-medium text-gray-600">Name</label>
                   <input type="text" name="name" required className="w-full border rounded p-2 mt-1"
                     value={formData.name}
                     onChange={handleChange} />
-                </div>
+                </section>
                 {/* email */}
-                <div>
+                <section>
                   <label className="block text-sm font-medium text-gray-600">Email</label>
                   <input type="email" name="email" required className="w-full border rounded p-2 mt-1"
                     value={formData.email} onChange={handleChange} />
-                </div>
+                </section>
                 {/* subject */}
-                <div>
+                <section>
                   <label className="block text-sm font-medium text-gray-600">Subject</label>
                   <input type="text" name="subject" required className="w-full border rounded p-2 mt-1"
                     value={formData.subject}
                     onChange={handleChange}
                   />
-                </div>
-                <div>
+                </section>
+                <section>
                   <label className="block text-sm font-medium text-gray-600">Message</label>
                   <textarea name="message" rows="4" required className="w-full border rounded p-2 mt-1"
                     value={formData.message}
                     onChange={handleChange} />
-                </div >
+                </section>
                 {/* submit button */}
                 <button
                   type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded transition" >Send Message

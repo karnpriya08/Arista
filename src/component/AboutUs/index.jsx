@@ -25,7 +25,7 @@ const About = () => {
         <h1 className='text-5xl text-red-400 text-center font-bold'>ABOUT US</h1>
       </header>
 
-      <section className='container bg-gradient-to-tl from-stone-50 via-red-50 to-red-200 flex flex-col space-y-8 p-5 mx-auto'>
+      <main className='container bg-gradient-to-tl from-stone-50 via-red-50 to-red-200 flex flex-col space-y-8 p-5 mx-auto'>
         {aboutSections.map((section, index) => (
           <div key={index}>
             {/* heading  */}
@@ -34,7 +34,7 @@ const About = () => {
             <p>{section.content}</p>
           </div>
         ))}
-      </section>
+      </main>
     </div>
   );
 };

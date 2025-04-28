@@ -47,19 +47,19 @@ const index = () => {
 
   return (
     <>
-      <div className='fixed top-0 left-0 w-full bg-gradient-to-r from-red-400 via-pink-500 to-red-600 p-2 shadow-md a z-50'>
+      <div className='fixed top-0 left-0 w-full bg-gradient-to-r from-red-400 via-pink-500 to-red-600  shadow-md a z-5'>
         <div className='flex justify-between items-center '>
           {/* logo */}
           <Link to="/">
-            <header className='flex text-xl justify-start font-bold items-center md:left-1/3 p-2 m-1  '>
-              <img src={image} alt="lo" width={50} height={20} />
+            <header className='flex text-xl justify-start font-bold items-center md:left-1/3 '>
+              <img src={image} alt="lo" width={50} height={15} />
               <span className='ml-2'>Arista Mall</span>
             </header>
           </Link>
-          <nav className='flex items-center m-1 p-1 space-x-6'>
+          <nav className='flex items-center mt- pt-0.5 space-x-6'>
             {/* search for mobile and desktop  */}
             <div onClick={() => setSearchOpen(!searchOpen)}
-              className="relative flex gap-0 justify-around  border rounded-2xl bg-white   hover:text-black hover:scale-110 items-center text-black text-xl md:mb-5 p-2" >
+              className="relative flex gap-0 justify-around  border rounded-2xl bg-white   hover:text-black hover:scale-110 items-center text-black text-xl md:mb-5 p-0.5" >
               <div className="container-responsive">
                 {/* displaying input field on click */}
                 {searchOpen && (
@@ -72,12 +72,12 @@ const index = () => {
             </div>
             {/* Dropdown search modal */}
             {openModal && search?.length > 0 && (
-              <div className="absolute w-1/2   lg:right-24 lg:w-1/4 bg-white mt-72 border border-gray-200 rounded-md shadow-lg z-50 max-h-60 overflow-y-auto">
+              <div className="absolute w-1/2   lg:right-24 lg:w-1/4 bg-white mt-80 border border-gray-200 rounded-md shadow-lg z-50 max-h-60 overflow-y-auto">
                 {filterProducts.length > 0 ? (
                   // mapping on filtered product to display 
                   filterProducts.map((curPro, index) => (
                     <Link to={`/products/${curPro.id}`}>
-                      <div key={index} className="flex items-center gap-3 px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                      <div key={index} className="flex items-center gap-3 px-4 py-1 hover:bg-gray-100 cursor-pointer"
                         //  {/* // Handle click, like navigating or selecting */}
                         onClick={() => { setOpenModal(false); setSearch("") }}>
                         <img src={curPro.image} alt={curPro.title} className="w-8 h-8 object-contain" />
@@ -86,7 +86,7 @@ const index = () => {
                     </Link>
                   ))
                 ) : (
-                  <div className="px-4 py-2 text-gray-500">No results found</div>
+                  <div className="px-4 py-1 text-gray-500">No results found</div>
                 )}
               </div>
             )}
@@ -125,9 +125,9 @@ const index = () => {
         </div>
       </div>
       {/* mobile links */}
-      <div className={`transition-all duration-300 ease-in-out ${menuOpen ? 'max-h-96' : 'max-h-0 overflow-hidden'} z-40 fixed top-16 left-0 w-full`}>
+      <div className={`transition-all duration-300 ease-in-out ${menuOpen ? 'max-h-96' : 'max-h-0 overflow-hidden'} z-30 fixed top-16 left-0 w-full`}>
         {menuOpen && (
-          <div className='bg-gradient-to-r from-red-400 via-pink-500 to-red-500  shadow-md border-red-500 rounded-2xl  font-bold w-auto  p-2 text-left z-10'>
+          <div className='bg-gradient-to-r from-red-400 via-pink-500 to-red-500  shadow-md border-red-500 rounded-2xl  font-bold w-auto  p-1 text-left z-10'>
             <ul className='md:hidden grid-cols-6 justify-around space-y-1 text-2xl px-5'>
               <Link to="/" >
                 <li className='text-2xl hover:text-blue-200 flex gap-1 m-1.5'> <HiHome className='hover:scale-120' /> Home</li>

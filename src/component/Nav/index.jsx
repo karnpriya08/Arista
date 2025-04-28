@@ -32,11 +32,11 @@ const Nav = () => {
   };
 
   return (
-    <div className='fixed top-[72px] left-0 w-full z-40 lg:mt-5 bg-stone-100 text-black shadow-lg rounded-sm'>
-      <nav className='p-4'>
+    <div className='fixed top-[32px] left-0 w-full z-8 lg:mt-6 bg-stone-100 text-black shadow-lg rounded-sm'>
+      <nav className='md:p-0.5'>
 
         {/* Desktop View */}
-        <ul className='hidden md:grid md:grid-cols-5 lg:w-1/3 w-full font-semibold gap-2.5'>
+        <ul className='hidden md:grid md:grid-cols-5 lg:w-1/3 w-full font-semibold gap-1'>
           {categories.map((cat) => (
             <li key={cat.value}
               className='hover:text-red-500 cursor-pointer'
@@ -47,10 +47,10 @@ const Nav = () => {
         </ul>
 
         {/* Mobile View */}
-        <div className='border-gray-300 p-1 m-1 md:hidden px-auto'>
+        <div className='border-gray-300 p-0.5 m-0.5 md:hidden px-auto'>
           <p>Browse Categories{" "}
             <select
-              className='p-3.5 px-8 bg-white border border-gray-400 rounded-2xl text-xs'
+              className='p-1 px-8 bg-white border border-gray-400 rounded-2xl text-xs'
               value={selectedCategory}
               onChange={(e) => handleCategorySelect(e.target.value)}>
             

@@ -31,7 +31,7 @@ const index = () => {
 
   return (
     <>
-      <div>
+      <div style={{ paddingTop: '80px' }}>
         {/* header */}
         <header className='bg-gradient-to-tl from-stone-100 via-transparent to-red-300 p-6'>
           <h1 className='text-center font-semibold'>Shopping Cart</h1>

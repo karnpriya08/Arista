@@ -35,7 +35,7 @@ const Wishlist = () => {
 
 return (
   <>
-    <div className='w-full'>
+    <div  style={{ paddingTop: '80px' }} className='w-full'>
       {/* header */}
       <header className='bg-gradient-to-tl from-stone-50 via-red-50 to-red-200  p-6'>
         <h1 className='text-center font-semibold'>Wishlist</h1>
@@ -66,7 +66,7 @@ return (
         )
           : (
             // if item in wishlist
-            <div>
+            <div >
               { wishListItems.map((item) => (
                 <div key={item.product}>
                   <div className='grid grid-cols-2  m-3 p-2 justify-between md:grid-cols-6 md:space-y-2 ' key={item.product}>

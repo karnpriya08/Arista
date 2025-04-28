@@ -31,18 +31,18 @@ const index = () => {
             {/* section 2 */}
             <section>
               <div className='flex-row '>
-                <div className='flex flex-col justify-items-start'>
+                <section className='flex flex-col justify-items-start'>
                   <h3 className='text-xl font-semibold'>Let Us Help You</h3>
                   <Link to='/faq' ><h6 className='hover:translate-x-2'>FAQ</h6></Link>
                   <Link to='/terms'><h6 className='hover:translate-x-2'>Terms and conditions </h6></Link>
                   <Link to='/contact'> <h6 className='hover:translate-x-2'>Help</h6> </Link>
-                </div>
+                </section>
 
-                <div className='flex flex-row  md:gap-3 w-full'>   Social:
+                <section className='flex flex-row  md:gap-3 w-full'>   Social:
                   <div className='p-1 cursor-pointer hover:scale-150'><a href="https://www.facebook.com" target="_blank"> <span className=''><FaFacebook /></span></a></div>
                   <div className='p-1 cursor-pointer hover:scale-150'><a href="https://in.pinterest.com" target="_blank"><FaSquareXTwitter /></a></div>
                   <div className='p-1 cursor-pointer hover:scale-150'><a href="https://www.instagram.com" target="_blank"><FaInstagramSquare /></a></div>
-                </div>
+                </section>
               </div>
             </section>
 

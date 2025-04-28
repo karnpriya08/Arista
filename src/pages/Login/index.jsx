@@ -71,8 +71,8 @@ const Login = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-cover bg-center flex flex-col justify-center"
-        style={{ backgroundImage: `url(${backgroundImage})` }}>
+      <div  className="min-h-screen bg-cover bg-center flex flex-col justify-center"
+        style={{ backgroundImage: `url(${backgroundImage})`, paddingTop: '80px' }}>
         {/* if no error and form submitted  */}
         {Object.keys(formErrors).length === 0 && isSubmit
           ? (<div>signed in sucesfully</div>) :

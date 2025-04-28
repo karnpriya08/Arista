@@ -20,7 +20,7 @@ const index = () => {
   return (
     <>
       {/* product displaying  */}
-      <div className='grid grid-cols-1 justify-around md:grid-cols-2 lg:grid-cols-4 gap-14 p-8 '>
+      <div style={{ paddingTop: '100px' }} className='grid grid-cols-1 justify-around md:grid-cols-2 lg:grid-cols-4 gap-14 p-8 '>
         {filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

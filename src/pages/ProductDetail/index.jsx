@@ -59,7 +59,7 @@ const index = () => {
     <>
     {/* handling loading and error */}
       {loading ? (<Loading />) : error ? (<Error />) : (
-        <div data-testid="product-detail-container"  className='container-content p-10 m-10 bg-gradient-to-tl from-stone-100 via-transparent to-red-300'>
+        <div style={{ paddingTop: '80px' }} data-testid="product-detail-container"  className='container-content p-10 m-10 bg-gradient-to-tl from-stone-100 via-transparent to-red-300'>
           <div className='flex-col'>
             {/* section-1 */}
             <section className='grid grid-cols-1 md:grid-cols-2 gap-2'>

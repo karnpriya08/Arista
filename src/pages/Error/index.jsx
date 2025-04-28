@@ -4,7 +4,7 @@ import Image from '../../assets/images/error.svg'
 
 const index = () => {
   return (
-    <div className='text-center text-2xl p-10 space-y-5'>
+    <div className='text-center text-2xl p-10 space-y-5' style={{ paddingTop: '80px' }}>
       <img src={Image} alt="image" />
     
     <h1 className='font-extrabold bg-red-300 p-5' > OOooPPPsssss.. </h1>
