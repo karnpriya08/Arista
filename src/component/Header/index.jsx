@@ -1,168 +1,131 @@
-import React, { useEffect, useState } from 'react'
-import { FaSearch, FaHeart, FaShoppingCart, FaUser, FaTimes, FaBars, FaShopify } from 'react-icons/fa';
-import image from "../../assets/images/logo2.png";
-import { Badge } from 'customizable-react-badges';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { FaSearch, FaHeart, FaShoppingCart, FaUser, FaTimes, FaShopify } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { getAllProducts } from '../../redux/action/productAction';
-import { useDispatch, useSelector } from 'react-redux';
-import Nav from '../Nav';
 import { HiHome } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllProducts } from '../../redux/action/productAction';
+import { Badge } from 'customizable-react-badges';
+import Nav from '../Nav';
+import image from '../../assets/images/logo2.png';
 
-const index = () => {
+const Header = () => {
+  const dispatch = useDispatch();
   const [searchOpen, setSearchOpen] = useState(false);
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const dispatch = useDispatch();
-  // getting products 
-  const allproducts = useSelector((state) => state.allProducts || {});
-  const { products = [] } = allproducts;
-  // getting cart items to calculate cart item no. 
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
+
+  const { products = [] } = useSelector((state) => state.allProducts || {});
+  const { cartItems = [] } = useSelector((state) => state.cart || {});
   const cartItemCount = cartItems.reduce((acc, item) => acc + item.qty, 0);
 
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
 
-  // handle changes of search to get value of search
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSearch(e.target.value);
-    setOpenModal(true);
-    if (e.target.value == 0) {
-      setOpenModal(false);
-    }
-  }
-  // search functinality comparing search value with prduct title 
-  const searchProduct = (product) => {
-    if (search) {
-      return product.title.toLowerCase().includes(search.toLowerCase())
-    }
-    return product
-  }
-  const filterProducts = products.filter((product) => searchProduct(product));
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearch(value);
+    setOpenModal(value.trim().length > 0);
+  };
+
+  const filteredProducts = products.filter(product =>
+    product.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <>
-      <div className='fixed top-0 left-0 w-full bg-gradient-to-r from-red-400 via-pink-500 to-red-600  shadow-md a z-5'>
-        <div className='flex justify-between items-center '>
-          {/* logo */}
-          <Link to="/">
-            <header className='flex text-xl justify-start font-bold items-center md:left-1/3 '>
-              <img src={image} alt="lo" width={50} height={15} />
-              <span className='ml-2'>Arista Mall</span>
-            </header>
+      {/* Top Header Bar */}
+      <header className="fixed top-0 left-0 w-full bg-gradient-to-r from-red-400 via-pink-500 to-red-600 shadow-md z-50">
+        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center py-3">
+          {/* Logo */}
+          <Link to="/" className="flex items-center text-black font-bold text-xl">
+            <img src={image} alt="Logo" className="w-10 h-auto" />
+            <span className="ml-2">Arista Mall</span>
           </Link>
-          <nav className='flex items-center mt- pt-0.5 space-x-6'>
-            {/* search for mobile and desktop  */}
-            <div onClick={() => setSearchOpen(!searchOpen)}
-              className="relative flex gap-0 justify-around  border rounded-2xl bg-white   hover:text-black hover:scale-110 items-center text-black text-xl md:mb-5 p-0.5" >
-              <div className="container-responsive">
-                {/* displaying input field on click */}
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-6">
+            <div className="relative">
+              <button
+                className="flex items-center bg-white rounded-full px-3 py-1 text-black text-sm"
+                onClick={() => setSearchOpen(!searchOpen)}
+              >
+                <FaSearch />
                 {searchOpen && (
-                  <div className="">
-                    <input type="text" placeholder='search for product' className='w-full focus:outline-none cursor-pointer' autoFocus
-                      onChange={handleChange} />
-                  </div>
+                  <input
+                    type="text"
+                    className="ml-2 bg-transparent outline-none text-black"
+                    placeholder="Search products..."
+                    value={search}
+                    onChange={handleSearchChange}
+                    autoFocus
+                  />
                 )}
-              </div> <FaSearch />
-            </div>
-            {/* Dropdown search modal */}
-            {openModal && search?.length > 0 && (
-              <div className="absolute w-1/2   lg:right-24 lg:w-1/4 bg-white mt-80 border border-gray-200 rounded-md shadow-lg z-50 max-h-60 overflow-y-auto">
-                {filterProducts.length > 0 ? (
-                  // mapping on filtered product to display 
-                  filterProducts.map((curPro, index) => (
-                    <Link to={`/products/${curPro.id}`}>
-                      <div key={index} className="flex items-center gap-3 px-4 py-1 hover:bg-gray-100 cursor-pointer"
-                        //  {/* // Handle click, like navigating or selecting */}
-                        onClick={() => { setOpenModal(false); setSearch("") }}>
-                        <img src={curPro.image} alt={curPro.title} className="w-8 h-8 object-contain" />
-                        <span>{curPro.title}</span>
-                      </div>
-                    </Link>
-                  ))
-                ) : (
-                  <div className="px-4 py-1 text-gray-500">No results found</div>
-                )}
-              </div>
-            )}
-            {/* desktop links */}
-            <ul className='hidden md:grid md:grid-cols-5  justify-evenly gap-2 mt-1'>
-              <Link to='/' className='text-2xl hover:text-blue-200  hover:scale-110'><HiHome /></Link>
-              <Link to="/products" className='text-2xl hover:text-blue-200 '><FaShopify className='hover:scale-120' /></Link>
-
-              <Link to="/login"><li className="relative text-2xl hover:scale-110"><FaUser /> </li></Link>
-
-              <Link to="/wishlist">
-                <li className='flex  text-2xl relative hover:scale-110'>
-                  <FaHeart />
-                </li>
-              </Link>
-
-              <Link to="cart"><li className='flex text-2xl relative hover:scale-110'>
-                <Badge content={cartItemCount} verticalAlignment="top" horizontalAlignment="right" bgColor="pink">
-                  <FaShoppingCart /><span className='text-transparent'>......</span>
-                </Badge>
-              </li>
-              </Link>
-
-            </ul>
-
-
-            {/* hamburger button */}
-            <div className='md:hidden'>
-              <button data-testid="hamburger-toggle" className='text-xl text-white '
-                onClick={() => setMenuOpen(!menuOpen)} >
-                {menuOpen ? <FaTimes /> : <RxHamburgerMenu />}
               </button>
+              {openModal && (
+                <div className="absolute top-full left-0 w-72 max-h-60 mt-2 bg-white shadow-lg border rounded-md z-50 overflow-y-auto text-black">
+                  {filteredProducts.length > 0 ? (
+                    filteredProducts.map((p) => (
+                      <Link to={`/products/${p.id}`} key={p.id} onClick={() => setOpenModal(false)}>
+                        <div className="flex items-center gap-3 px-4 py-2 hover:bg-gray-100">
+                          <img src={p.image} alt={p.title} className="w-8 h-8 object-contain" />
+                          <span>{p.title}</span>
+                        </div>
+                      </Link>
+                    ))
+                  ) : (
+                    <div className="px-4 py-2 text-gray-500">No results found</div>
+                  )}
+                </div>
+              )}
             </div>
-          </nav>
-          {/* navbar end  */}
-        </div>
-      </div>
-      {/* mobile links */}
-      <div className={`transition-all duration-300 ease-in-out ${menuOpen ? 'max-h-96' : 'max-h-0 overflow-hidden'} z-30 fixed top-16 left-0 w-full`}>
-        {menuOpen && (
-          <div className='bg-gradient-to-r from-red-400 via-pink-500 to-red-500  shadow-md border-red-500 rounded-2xl  font-bold w-auto  p-1 text-left z-10'>
-            <ul className='md:hidden grid-cols-6 justify-around space-y-1 text-2xl px-5'>
-              <Link to="/" >
-                <li className='text-2xl hover:text-blue-200 flex gap-1 m-1.5'> <HiHome className='hover:scale-120' /> Home</li>
-              </Link>
-              <Link to="/products" >
-                <li className='text-2xl hover:text-blue-200 flex gap-1 m-1.5'> <FaShopify className='hover:scale-120' /> Shop</li>
-              </Link>
-              <Link to="/login">
-                <li className="relative  flex m-1.5  hover:text-blue-200"><FaUser />Login</li>
-              </Link>
-              <Link to="/wishlist " >
-                <li className="flex items-center  relative  hover:text-blue-200 mb-3">
-                  <FaHeart className='m-1.5' />Wishlist</li>
-              </Link>
-              <Link to="cart">
-                <li className='flex  hover:text-blue-200'>
-                  <div className=''>
-                    <Badge content={cartItemCount} verticalAlignment="top" horizontalAlignment="right" bgColor="pink">
-                      <FaShoppingCart className='m-1.5' />
-                    </Badge>
-                  </div>
-                  <span className='inline-block'>cart</span>
-                </li>
-              </Link>
-              <Link to="/about">
-                <li className="relative flex m-1.5  hover:text-blue-200">About Us</li>
-              </Link>
-            </ul>
-          </div>
-        )}
-      </div>
-      {/* nav for category  */}
-      <div className=''><Nav /></div>
-    </>
-  )
-}
 
-export default index
+            {/* Icons */}
+            <Link to="/" className="text-black text-xl hover:text-gray-800"><HiHome /></Link>
+            <Link to="/products" className="text-black text-xl hover:text-gray-800"><FaShopify /></Link>
+            <Link to="/login" className="text-black text-xl hover:text-gray-800"><FaUser /></Link>
+            <Link to="/wishlist" className="text-black text-xl hover:text-gray-800"><FaHeart /></Link>
+            <Link to="/cart" className="text-black text-xl relative hover:text-gray-800">
+              <Badge content={cartItemCount} bgColor="pink">
+                <FaShoppingCart />
+              </Badge>
+            </Link>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <div className="md:hidden text-black text-2xl" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <FaTimes /> : <RxHamburgerMenu />}
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Dropdown */}
+      {menuOpen && (
+        <div className="md:hidden fixed top-16 left-0 w-full bg-white z-40 shadow-md py-4 border-t border-gray-300">
+          <ul className="flex flex-col items-start px-6 space-y-4 text-black text-lg font-medium">
+            <Link to="/" onClick={() => setMenuOpen(false)}><li className="flex items-center gap-2"><HiHome />Home</li></Link>
+            <Link to="/products" onClick={() => setMenuOpen(false)}><li className="flex items-center gap-2"><FaShopify />Shop</li></Link>
+            <Link to="/login" onClick={() => setMenuOpen(false)}><li className="flex items-center gap-2"><FaUser />Login</li></Link>
+            <Link to="/wishlist" onClick={() => setMenuOpen(false)}><li className="flex items-center gap-2"><FaHeart />Wishlist</li></Link>
+            <Link to="/cart" onClick={() => setMenuOpen(false)}>
+              <li className="flex items-center gap-2">
+                <Badge content={cartItemCount} bgColor="pink">
+                  <FaShoppingCart />
+                </Badge>
+                Cart
+              </li>
+            </Link>
+            <Link to="/about" onClick={() => setMenuOpen(false)}><li>About Us</li></Link>
+          </ul>
+        </div>
+      )}
+
+      {/* Nav categories (below header) */}
+      <div className="mt-20"><Nav /></div>
+    </>
+  );
+};
+
+export default Header;
